@@ -45,12 +45,6 @@ if (!defined("ABSPATH")) {
 if ( file_exists( dirname( __FILE__ ) . "/vendor/autoload.php" ) ) {
   require_once dirname( __FILE__ ) . "/vendor/autoload.php";
 }
-/**
- * Define CONSTANTS
- */
-define( "PLUGIN_PATH", plugin_dir_path(__FILE__) );
-define( "PLUGIN_URL", plugin_dir_url(__FILE__) );
-define( "PLUGIN", plugin_basename(__FILE__) );
 
 use Inc\Base\Activate;
 use Inc\Base\Deactivate;
