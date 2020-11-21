@@ -1,1 +1,1 @@
-# Information Wheel WordPress Plugin
+# WP Plugin Dev Learning
