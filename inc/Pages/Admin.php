@@ -5,31 +5,47 @@
 
  namespace Inc\Pages;
 
- use \Inc\Base\BaseController;
  use \Inc\API\SettingsApi;
+ use \Inc\Base\BaseController;
+ use \Inc\API\Callbacks\AdminCallbacks;
 
  class Admin extends BaseController {
 
   public $pages = array();
   public $subpages = array();
-
+  public $callbacks;
   public $settings;
 
   public function __construct() {
+    
+  }
+
+  public function register() {
     $this->settings = new SettingsApi();
 
+    $this->callbacks = new AdminCallbacks();
+
+    $this->setPages();
+    $this->setSubPages();
+    $this->settings->addPages( $this->pages )->withSubPage( "Dashboard" )->addSubPages( $this->subpages )->register();
+
+  }
+
+  public function setPages() {
     $this->pages = [
       [
         "page_title" => "Braweria Plugin",
         "menu_title" => "Braweria",
         "capability" => "manage_options",
         "slug" => "braweria_plugin",
-        "callback" => function() { echo '<h1>Braweria Plugin!</h1>'; },
+        "callback" => array( $this->callbacks, "adminDashboard" ),
         "icon_url" => "dashicons-buddicons-activity",
         "position" => 110
       ]
     ];
+  }
 
+  public function setSubPages() {
     $this->subpages = [
       [
         "parent_slug" => "braweria_plugin",
@@ -37,7 +53,7 @@
         "menu_title" => "CPT",
         "capability" => "manage_options",
         "slug" => "braweria_cpt",
-        "callback" => function() { echo '<h1>Custom Post Type Manager</h1>'; }
+        "callback" => array( $this->callbacks, "adminCPT" )
       ],
       [
         "parent_slug" => "braweria_plugin",
@@ -45,13 +61,9 @@
         "menu_title" => "Sub",
         "capability" => "manage_options",
         "slug" => "braweria_sub",
-        "callback" => function() { echo '<h1>Another Subpage</h1>'; }
+        "callback" => array( $this->callbacks, "adminSub" )
       ]
     ];
   }
 
-  public function register() {
-    // add_action( "admin_menu", array( $this, "add_admin_pages" ) );
-    $this->settings->addPages( $this->pages )->withSubPage( "Dashboard" )->addSubPages( $this->subpages )->register();
-  }
  }
