@@ -12,30 +12,30 @@ use Inc\Base\BaseController;
     return require_once( $this->plugin_path . "/admin/layout.php" );
   }
 
-  public function adminCPT() {
-    return require_once( $this->plugin_path . "/admin/cpt.php" );
+  public function editInfoWheel() {
+    return require_once( $this->plugin_path . "/admin/infoWheel.php" );
   }
 
-  public function adminSub() {
-    return require_once( $this->plugin_path . "/admin/sub.php" );
-  }
-
-  public function braweriaOptionsGroup( $input ) {
+  public function createList( $input ) {
     return $input;
   }
 
-  public function braweriaSectionGroup(  ) {
+  public function listSection01(  ) {
     return "Check this out!";
   }
 
-  public function braweriaFieldGroup(  ) {
-    $value = esc_attr( get_option( "braweria_name" ) );
-    echo '<input type="text" class="regular-text" name="braweria_name" value="' . $value . '" placeholder="Dein Braweria Name" />' ;
+  public function chooseIcon(  ) {
+    $value = esc_attr( get_option( "chosen_icon" ) );
+    echo '<input type="text" class="regular-text" name="chosen_icon" value="' . $value . '" placeholder="Icon Auswahl" />' ;
   }
 
-  public function braweriaFirstName(  ) {
-    $value = esc_attr( get_option( "first_name" ) );
-    echo '<input type="text" class="regular-text" name="first_name" value="' . $value . '" placeholder="Dein Name" />' ;
+  public function addTitle(  ) {
+    $value = esc_attr( get_option( "chosen_title" ) );
+    echo '<input type="text" class="regular-text" name="chosen_title" value="' . $value . '" placeholder="Titel" />' ;
   }
 
+  public function addDescription(  ) {
+    $value = esc_attr( get_option( "chosen_description" ) );
+    echo '<textarea type="text" class="regular-text" name="chosen_description" value="' . $value . '" placeholder="Beschreibung" ></textarea><p>Your Value: ' . $value . '</p>' ;
+  }
  }

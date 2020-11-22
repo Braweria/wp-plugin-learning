@@ -32,7 +32,7 @@
     $this->setSections();
     $this->setFields();
 
-    $this->settings->addPages( $this->pages )->withSubPage( "Dashboard" )->addSubPages( $this->subpages )->register();
+    $this->settings->addPages( $this->pages )->withSubPage( "Einleitung" )->addSubPages( $this->subpages )->register();
 
   }
 
@@ -54,19 +54,11 @@
     $this->subpages = [
       [
         "parent_slug" => "braweria_plugin",
-        "page_title" => "Custom post Types",
-        "menu_title" => "CPT",
+        "page_title" => "Info Kreis bearbeiten",
+        "menu_title" => "Info Kreis bearbeiten",
         "capability" => "manage_options",
-        "slug" => "braweria_cpt",
-        "callback" => array( $this->callbacks, "adminCPT" )
-      ],
-      [
-        "parent_slug" => "braweria_plugin",
-        "page_title" => "Subpage",
-        "menu_title" => "Sub",
-        "capability" => "manage_options",
-        "slug" => "braweria_sub",
-        "callback" => array( $this->callbacks, "adminSub" )
+        "slug" => "info_kreis_bearbeiten",
+        "callback" => array( $this->callbacks, "editInfoWheel" )
       ]
     ];
   }
@@ -74,13 +66,17 @@
   public function setSettings() {
     $args = [
       [
-        "option_group" => "braweria_options_group",
-        "option_name" => "braweria_name",
-        "callback" => array( $this->callbacks, "braweriaOptionsGroup" )
+        "option_group" => "list_options",
+        "option_name" => "choose_icon",
+        "callback" => array( $this->callbacks, "createList" )
       ],
       [
-        "option_group" => "braweria_options_group",
-        "option_name" => "First_name"
+        "option_group" => "list_options",
+        "option_name" => "set_title"
+      ],
+      [
+        "option_group" => "list_options",
+        "option_name" => "set_description"
       ]
     ];
 
@@ -90,10 +86,10 @@
   public function setSections() {
     $args = [
       [
-        "id" => "braweria_admin_index",
-        "title" => "Settings",
-        "callback" => array( $this->callbacks, "braweriaSectionGroup" ),
-        "page" => "braweria_plugin"
+        "id" => "item_01",
+        "title" => "Item 1",
+        "callback" => array( $this->callbacks, "listSection01" ),
+        "page" => "info_kreis_bearbeiten"
       ]
     ];
 
@@ -103,30 +99,28 @@
   public function setFields() {
     $args = [
       [
-        "id" => "braweria_name",
-        "title" => "Braweria Name",
-        "callback" => array( $this->callbacks, "braweriaFieldGroup" ),
-        "page" => "braweria_plugin",
-        "section" => "braweria_admin_index",
-        "args" => [
-          [
-            "label_for" => "braweria_name",
-            "class" => "example-class"
-          ]
-        ]
+        "id" => "choose_icon",
+        "title" => "Icon Auswahl",
+        "callback" => array( $this->callbacks, "chooseIcon" ),
+        "page" => "info_kreis_bearbeiten",
+        "section" => "item_01",
+        "args" => [ [ ] ]
       ],
       [
-        "id" => "first_name",
-        "title" => "First name",
-        "callback" => array( $this->callbacks, "braweriaFirstName" ),
-        "page" => "braweria_plugin",
-        "section" => "braweria_admin_index",
-        "args" => [
-          [
-            "label_for" => "first_name",
-            "class" => "example-class"
-          ]
-        ]
+        "id" => "set_title",
+        "title" => "Titel",
+        "callback" => array( $this->callbacks, "addTitle" ),
+        "page" => "info_kreis_bearbeiten",
+        "section" => "item_01",
+        "args" => [ [ ] ]
+      ],
+      [
+        "id" => "set_description",
+        "title" => "Beschreibung",
+        "callback" => array( $this->callbacks, "addDescription" ),
+        "page" => "info_kreis_bearbeiten",
+        "section" => "item_01",
+        "args" => [ [ ] ]
       ]
     ];
 

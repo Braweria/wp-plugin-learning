@@ -46,7 +46,6 @@ if ( file_exists( dirname( __FILE__ ) . "/vendor/autoload.php" ) ) {
   require_once dirname( __FILE__ ) . "/vendor/autoload.php";
 }
 
-require_once __DIR__ . '/vendor/fortawesome/wordpress-fontawesome/index.php';
 
 use Inc\Base\Activate;
 use Inc\Base\Deactivate;

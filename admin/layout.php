@@ -1,16 +1,38 @@
 <div class="wrap">
-  <h2>Mein Braweria Pugin</h2>
-  <?php settings_errors(); ?>
+  <h1>Anleitung zum Info Kreis</h1>
 
-  <form method="post" action="options.php">
-    <?php
-      settings_fields( "braweria_options_group" );
-      do_settings_sections( "braweria_plugin" );
-      submit_button( );
-    ?>
-  </form>
+<div id="welcome-panel" class="welcome-panel">
+  <div class="welcome-panel-content">
+    <div class="welcome-panel-column-container">
+      <div class="welcome-panel-column">
 
+        <style>
+          .welcome-panel {
+            padding-bottom: 23px;
+          }
 
+          .welcome-panel h3 {
+            margin: 1em 0 1.2em;
+          }
+
+          .welcome-panel .dashicons {
+            font-size: 30px;
+            width: 40px;
+          }
+
+        </style>
+
+        <h3><span class="dashicons dashicons-info-outline"></span> Du brauchst FontAwesome um Icons darstellen zu können!</h3>
+        <p>Damit dieses Plugin richtig funktionieren kann, muss FontAwesome auf dieser Seite installiert sein. Dies wurde entweder bereits im Theme gemacht, oder du musst es als Plugin zusätzlich installieren um zugriff auf die Icons zu erlangen.</p>
+        <p><a href="https://wordpress.org/plugins/font-awesome/">Das Plugin kannst du unter diesem Link finden und installieren.</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div>
+    <h2>Hier kommt mehr info rein....</h2>
+  </div>
 
 
 </div>
