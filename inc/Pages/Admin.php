@@ -52,6 +52,6 @@
 
   public function register() {
     // add_action( "admin_menu", array( $this, "add_admin_pages" ) );
-    $this->settings->addPages( $pages )->withSubPage( "Dashboard" )->addSubPages( $this->subpages )->register();
+    $this->settings->addPages( $this->pages )->withSubPage( "Dashboard" )->addSubPages( $this->subpages )->register();
   }
  }
