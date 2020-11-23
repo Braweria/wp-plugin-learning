@@ -70,17 +70,17 @@
   }
 
   public function setSettings( array $settings ) {
-    $this-> settings = $settings;
+    $this->settings = $settings;
     return $this;
   }
 
   public function setSections( array $sections ) {
-    $this-> sections = $sections;
+    $this->sections = $sections;
     return $this;
   }
 
   public function setFields( array $fields ) {
-    $this-> fields = $fields;
+    $this->fields = $fields;
     return $this;
   }
 

@@ -6,6 +6,7 @@
 
 namespace Inc;
 
+
 final class Init {
   /**
    * Store all the classes inside an array
@@ -15,7 +16,8 @@ final class Init {
     return [
       Pages\Admin::class,
       Base\Enqueue::class,
-      Base\SettingsLinks::class
+      Base\SettingsLinks::class,
+      API\ShortcodeList::class
     ];
   }
   /**

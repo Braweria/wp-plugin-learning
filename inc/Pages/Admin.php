@@ -72,11 +72,13 @@
       ],
       [
         "option_group" => "list_options",
-        "option_name" => "set_title"
+        "option_name" => "set_title",
+        "callback" => array( $this->callbacks, "createList" )
       ],
       [
         "option_group" => "list_options",
-        "option_name" => "set_description"
+        "option_name" => "set_description",
+        "callback" => array( $this->callbacks, "createList" )
       ]
     ];
 
@@ -87,7 +89,7 @@
     $args = [
       [
         "id" => "item_01",
-        "title" => "Item 1",
+        "title" => "Item",
         "callback" => array( $this->callbacks, "listSection01" ),
         "page" => "info_kreis_bearbeiten"
       ]
@@ -100,11 +102,13 @@
     $args = [
       [
         "id" => "choose_icon",
-        "title" => "Icon Auswahl",
+        "title" => "<label>Icon Auswahl</label>",
         "callback" => array( $this->callbacks, "chooseIcon" ),
         "page" => "info_kreis_bearbeiten",
         "section" => "item_01",
-        "args" => [ [ ] ]
+        "args" => [ [ 
+          "default" => "Kein Icon gesetzt"
+        ] ]
       ],
       [
         "id" => "set_title",
@@ -112,7 +116,9 @@
         "callback" => array( $this->callbacks, "addTitle" ),
         "page" => "info_kreis_bearbeiten",
         "section" => "item_01",
-        "args" => [ [ ] ]
+        "args" => [ [ 
+          "default" => "Kein Titel gesetzt"
+        ] ]
       ],
       [
         "id" => "set_description",
@@ -120,7 +126,9 @@
         "callback" => array( $this->callbacks, "addDescription" ),
         "page" => "info_kreis_bearbeiten",
         "section" => "item_01",
-        "args" => [ [ ] ]
+        "args" => [ [ 
+          "default" => "Keine Beschreibung gesetzt"
+        ] ]
       ]
     ];
 

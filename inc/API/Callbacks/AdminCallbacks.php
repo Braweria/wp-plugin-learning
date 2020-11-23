@@ -16,26 +16,31 @@ use Inc\Base\BaseController;
     return require_once( $this->plugin_path . "/admin/infoWheel.php" );
   }
 
+ 
+
   public function createList( $input ) {
+    if ( empty($input) ) {
+      return;
+    }
     return $input;
   }
 
   public function listSection01(  ) {
-    return "Check this out!";
+    echo "Check this out!";
   }
 
   public function chooseIcon(  ) {
-    $value = esc_attr( get_option( "chosen_icon" ) );
-    echo '<input type="text" class="regular-text" name="chosen_icon" value="' . $value . '" placeholder="Icon Auswahl" />' ;
+    $value = esc_attr( get_option( "choose_icon" ) );
+    echo '<input type="text" class="regular-text" name="choose_icon" value="' . $value . '" placeholder="Icon Code einfügen" />';
   }
 
   public function addTitle(  ) {
-    $value = esc_attr( get_option( "chosen_title" ) );
-    echo '<input type="text" class="regular-text" name="chosen_title" value="' . $value . '" placeholder="Titel" />' ;
+    $value = esc_attr( get_option( "set_title" ) );
+    echo '<input type="text" class="regular-text" name="set_title" value="' . $value . '" placeholder="Titel" />' ;
   }
 
   public function addDescription(  ) {
-    $value = esc_attr( get_option( "chosen_description" ) );
-    echo '<textarea type="text" class="regular-text" name="chosen_description" value="' . $value . '" placeholder="Beschreibung" ></textarea><p>Your Value: ' . $value . '</p>' ;
+    $value = esc_attr( get_option( "set_description" ) );
+    echo '<textarea rows="6" type="text" class="regular-text" name="set_description" placeholder="Kurze Beschreibung" >' . $value . '</textarea>' ;
   }
  }
