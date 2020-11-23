@@ -72,3 +72,8 @@ register_deactivation_hook( __FILE__, "deactivate_braweria_plugin" );
 if ( class_exists( "Inc\\Init" ) ) {
   Inc\Init::register_services();
 }
+
+remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
+add_action( 'shutdown', function() {
+   while ( @ob_end_flush() );
+} );

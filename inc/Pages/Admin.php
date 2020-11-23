@@ -97,14 +97,18 @@
       $this->settings->setSettings( $args );
   }
 
+
+  public $number;
   public function setSections( $amount ) {
+    $this->number = $amount;
+
     $args = [
       [
-        "id" => "iw_item_" .  $amount,
-        "title" => "Item " .  $amount,
+        "id" => "iw_item_" .  $number,
+        "title" => "Item " .  $number,
         // "callback" => array( $this->callbacks, "listSection" ),
-        "callback" => function() { return $this->callbacks->listSection( $amount ); },
-        "page" => "info_kreis_bearbeiten"
+        "callback" => function() use($number) { return $this->callbacks->listSection( $this->number ); },
+        "page" => "info_kreis_bearbeiten_" . $number
       ]
     ];
 
@@ -112,42 +116,44 @@
   }
 
   public function setFields( $amount ) {
+    $this->number = $amount;
+
     $args = [
       [
-        "id" => "iw_icon_" .  $amount,
+        "id" => "iw_icon_" .  $this->number,
         "title" => "Icon Auswahl",
         // "callback" => array( $this->callbacks, "chooseIcon" ),
-        "callback" => function() { return $this->callbacks->chooseIcon( $amount ); },
+        "callback" => function() use($number) { return $this->callbacks->chooseIcon( $this->number ); },
 
-        "page" => "info_kreis_bearbeiten",
-        "section" => "item_" .  $amount,
+        "page" => "info_kreis_bearbeiten_" . $this->number,
+        "section" => "item_" .  $this->number,
         "args" => [ [ 
           "default" => "",
-          "label_for" => "iw_icon_" .  $amount
+          "label_for" => "iw_icon_" .  $this->number
         ] ]
       ],
       [
-        "id" => "iw_title_" .  $amount,
+        "id" => "iw_title_" .  $this->number,
         "title" => "Titel",
         // "callback" => array( $this->callbacks, "addTitle" ),
-        "callback" => function() { return $this->callbacks->addTitle( $amount ); },
-        "page" => "info_kreis_bearbeiten",
-        "section" => "item_" .  $amount,
+        "callback" => function() use($number) { return $this->callbacks->addTitle( $this->number ); },
+        "page" => "info_kreis_bearbeiten_" . $this->number,
+        "section" => "item_" .  $this->number,
         "args" => [ [ 
           "default" => "",
-          "label_for" => "iw_title_" .  $amount
+          "label_for" => "iw_title_" .  $this->number
         ] ]
       ],
       [
-        "id" => "iw_description_" .  $amount,
+        "id" => "iw_description_" .  $this->number,
         "title" => "Beschreibung",
         // "callback" => array( $this->callbacks, "addDescription" ),
-        "callback" => function() { return $this->callbacks->addDescription( $amount ); },
-        "page" => "info_kreis_bearbeiten",
-        "section" => "item_" .  $amount,
+        "callback" => function() use($number) { return $this->callbacks->addDescription( $this->number ); },
+        "page" => "info_kreis_bearbeiten_" . $this->number,
+        "section" => "item_" .  $this->number,
         "args" => [ [ 
           "default" => "",
-          "label_for" => "iw_description_" .  $amount
+          "label_for" => "iw_description_" .  $this->number
         ] ]
       ]
     ];
