@@ -5,7 +5,7 @@
 
   <form method="post" action="options.php">
     <?php
-      settings_fields( "list_options" );
+      settings_fields( "iw_10" );
       do_settings_sections( "info_kreis_bearbeiten" );
       submit_button( );
     ?>

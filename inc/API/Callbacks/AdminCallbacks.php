@@ -29,18 +29,18 @@ use Inc\Base\BaseController;
     echo "Check this out!";
   }
 
-  public function chooseIcon(  ) {
-    $value = esc_attr( get_option( "choose_icon" ) );
-    echo '<input type="text" class="regular-text" name="choose_icon" value="' . $value . '" placeholder="Icon Code einfügen" />';
+  public function chooseIcon( $amount ) {
+    $value = esc_attr( get_option( "iw_icon_" . $amount ) );
+    echo '<input type="text" class="regular-text" name="iw_icon_' . $amount . '" value="' . $value . '" placeholder="Icon Code einfügen" />';
   }
 
-  public function addTitle(  ) {
-    $value = esc_attr( get_option( "set_title" ) );
-    echo '<input type="text" class="regular-text" name="set_title" value="' . $value . '" placeholder="Titel" />' ;
+  public function addTitle( $amount ) {
+    $value = esc_attr( get_option( "iw_title_" . $amount ) );
+    echo '<input type="text" class="regular-text" name="iw_title_' . $amount . '" value="' . $value . '" placeholder="Titel" />' ;
   }
 
-  public function addDescription(  ) {
-    $value = esc_attr( get_option( "set_description" ) );
-    echo '<textarea rows="6" type="text" class="regular-text" name="set_description" placeholder="Kurze Beschreibung" >' . $value . '</textarea>' ;
+  public function addDescription( $amount ) {
+    $value = esc_attr( get_option( "iw_description_" . $amount ) );
+    echo '<textarea rows="6" type="text" class="regular-text" name="iw_description_' . $amount . '" placeholder="Kurze Beschreibung" >' . $value . '</textarea>' ;
   }
  }
