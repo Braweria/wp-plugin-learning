@@ -19,14 +19,11 @@ use Inc\Base\BaseController;
  
 
   public function createList( $input ) {
-    if ( empty($input) ) {
-      return;
-    }
     return $input;
   }
 
-  public function listSection01(  ) {
-    echo "Check this out!";
+  public function listSection( $amount ) {
+    echo "Check out number: " . $amount;
   }
 
   public function chooseIcon( $amount ) {

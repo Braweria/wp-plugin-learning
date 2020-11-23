@@ -83,12 +83,12 @@
         "callback" => array( $this->callbacks, "createList" )
       ],
       [
-        "option_group" => "iw_",
+        "option_group" => "iw_" . $amount,
         "option_name" => "iw_title_" .  $amount,
         "callback" => array( $this->callbacks, "createList" )
       ],
       [
-        "option_group" => "iw_",
+        "option_group" => "iw_" . $amount,
         "option_name" => "iw_description_" .  $amount,
         "callback" => array( $this->callbacks, "createList" )
       ]
@@ -102,7 +102,8 @@
       [
         "id" => "iw_item_" .  $amount,
         "title" => "Item " .  $amount,
-        "callback" => array( $this->callbacks, "listSection01" ),
+        // "callback" => array( $this->callbacks, "listSection" ),
+        "callback" => function() { return $this->callbacks->listSection( $amount ); },
         "page" => "info_kreis_bearbeiten"
       ]
     ];
