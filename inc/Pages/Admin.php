@@ -100,15 +100,20 @@
 
   public $number;
   public function setSections( $amount ) {
-    $this->number = $amount;
+
+
 
     $args = [
       [
-        "id" => "iw_item_" .  $number,
-        "title" => "Item " .  $number,
+        "id" => "iw_item_" .  $amount,
+        "title" => "Item " .  $amount,
         // "callback" => array( $this->callbacks, "listSection" ),
-        "callback" => function() use($number) { return $this->callbacks->listSection( $this->number ); },
-        "page" => "info_kreis_bearbeiten_" . $number
+        // "callback" => function() { return $this->callbacks->listSection( $this->number ); },
+        "callback" => function() use($amount) { 
+          $foo = $this->callbacks->listSection( $amount ); 
+        },
+
+        "page" => "info_kreis_bearbeiten_" . $amount
       ]
     ];
 
@@ -116,44 +121,44 @@
   }
 
   public function setFields( $amount ) {
-    $this->number = $amount;
+    $number = $amount;
 
     $args = [
       [
-        "id" => "iw_icon_" .  $this->number,
+        "id" => "iw_icon_" .  $number,
         "title" => "Icon Auswahl",
         // "callback" => array( $this->callbacks, "chooseIcon" ),
         "callback" => function() use($number) { return $this->callbacks->chooseIcon( $this->number ); },
 
-        "page" => "info_kreis_bearbeiten_" . $this->number,
-        "section" => "item_" .  $this->number,
+        "page" => "info_kreis_bearbeiten_" . $number,
+        "section" => "item_" .  $number,
         "args" => [ [ 
           "default" => "",
-          "label_for" => "iw_icon_" .  $this->number
+          "label_for" => "iw_icon_" .  $number
         ] ]
       ],
       [
-        "id" => "iw_title_" .  $this->number,
+        "id" => "iw_title_" .  $number,
         "title" => "Titel",
         // "callback" => array( $this->callbacks, "addTitle" ),
         "callback" => function() use($number) { return $this->callbacks->addTitle( $this->number ); },
-        "page" => "info_kreis_bearbeiten_" . $this->number,
-        "section" => "item_" .  $this->number,
+        "page" => "info_kreis_bearbeiten_" . $number,
+        "section" => "item_" .  $number,
         "args" => [ [ 
           "default" => "",
-          "label_for" => "iw_title_" .  $this->number
+          "label_for" => "iw_title_" .  $number
         ] ]
       ],
       [
-        "id" => "iw_description_" .  $this->number,
+        "id" => "iw_description_" .  $number,
         "title" => "Beschreibung",
         // "callback" => array( $this->callbacks, "addDescription" ),
         "callback" => function() use($number) { return $this->callbacks->addDescription( $this->number ); },
-        "page" => "info_kreis_bearbeiten_" . $this->number,
-        "section" => "item_" .  $this->number,
+        "page" => "info_kreis_bearbeiten_" . $number,
+        "section" => "item_" .  $number,
         "args" => [ [ 
           "default" => "",
-          "label_for" => "iw_description_" .  $this->number
+          "label_for" => "iw_description_" .  $number
         ] ]
       ]
     ];
